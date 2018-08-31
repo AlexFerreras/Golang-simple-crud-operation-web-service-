@@ -1,0 +1,28 @@
+
+CREATE TABLE address(
+ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+city VARCHAR(30) DEFAULT NULL, 
+sector VARCHAR(30) DEFAULT NULL
+);
+
+
+INSERT INTO address (city, sector) 
+values("Santo Domingo", "Este");
+INSERT INTO address (city, sector) 
+values("Santiago", "Santo tomas");
+INSERT INTO address (city, sector) 
+values("La romana", "Popi street"); 
+
+CREATE TABLE people(
+ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+name VARCHAR(30) NOT NULL,
+lastname VARCHAR(30) NOT NULL,
+age INT NOT NULL,
+addressId INT DEFAULT 1,  
+status INT NOT NULL DEFAULT 0, 
+CONSTRAINT `fk_address` FOREIGN KEY (addressId) REFERENCES address(`ID`)
+);
+INSERT INTO PEOPLE(name, lastname, age, addressId)VALUES("Alex", "Ferreras", 20, 1);
+INSERT INTO PEOPLE(name, lastname, age, addressId)VALUES("Juan", "De lo palote", 15, 1);
+INSERT INTO PEOPLE(name, lastname, age, addressId)VALUES("Axel", "Ferreras", 24, 3); 
+INSERT INTO PEOPLE(name, lastname, age, addressId)VALUES("Angel", "Ferreras", 22, 2);
